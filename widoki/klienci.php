@@ -2,23 +2,22 @@
 <html lang="pl">
 <head>	
 <meta charset="utf-8">
-<title>Szpital powiatowy w Zakolu Dolnym</title>
+<title>Klienci</title>
 <link rel="stylesheet" type="text/css" href="../style/style.css" />
 </head>
 <body>
 	<div class="wrapper">
-	<a href="rejestruj.php" class="right">Rejestracja</a>
 	<a href="wyloguj.php" class="right">Wyloguj</a>
-	<a href="login.php" class="right">Zaloguj</a>
+	<a href="logowanie.php" class="right">Zaloguj</a>
 
-	<h1>SZPITAL POWIATOWY W ZAKOLU DOLNYM</h1>
+	<h1>Car rental</h1>
 	<nav>
 		<ul>
 			<li><a href="../index.php">Home</a></li>
 			<li><a href="wynajmij.php">Wynajmij</a></li>
 			<li><a href="klienci.php">Klienci</a></li>
 			<li><a href="samochody.php">Samochody</a></li>
-			<li><a href="użytkownicy.php">Uzytkownicy</a></li>
+			<li><a href="użytkownicy.php">Użytkownicy</a></li>
 		</ul>
 	</nav>	
 	<h2>Lista pacjentów</h2>

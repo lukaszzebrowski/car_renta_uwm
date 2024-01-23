@@ -2,13 +2,13 @@
 <html lang="pl">
 <head>	
 <meta charset="utf-8">
-<title>Klienci</title>
+<title>Wynajmij</title>
 <link rel="stylesheet" type="text/css" href="../style/style.css" />
 </head>
 <body>
 	<div class="wrapper">
 	<a href="wyloguj.php" class="right">Wyloguj</a>
-	<a href="login.php" class="right">Zaloguj</a>
+	<a href="logowanie.php" class="right">Zaloguj</a>
 
 	<h1>Car rental</h1>
 	<nav>
@@ -17,14 +17,14 @@
 			<li><a href="wynajmij.php">Wynajmij</a></li>
 			<li><a href="klienci.php">Klienci</a></li>
 			<li><a href="samochody.php">Samochody</a></li>
-			<li><a href="użytkownicy.php">Uzytkownicy</a></li>
+			<li><a href="uzytkownicy.php">Użytkownicy</a></li>
 		</ul>
         </nav>	
 	<h2>Zarejestruj pacjenta</h2>
 	<?php
 		session_start();
 		if(isset($_SESSION['sesja'])) {
-		 	if ($_SESSION['uprawnienia'] == 'pielęgniarka') {
+		 	if ($_SESSION['nazwa_stanowiska'] == 'Administrator') {
 			require '../skrypty/wczytywanie_l_s.php';
 		?>
 		<form name="dane" action="dodaj_p.php" method="post">

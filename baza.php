@@ -2,7 +2,7 @@
 	error_reporting(0);
 	$typ 	= 'mysql';			//typ bazy danych
 	$server = 'localhost';			//adres serwera WWW (nazwa serwera WWW)
-	$db		= 'szpital';		//nazwa bazy danych
+	$db		= 'rentalcars';		//nazwa bazy danych
 	$port	= '3306';			//numer portu XAMPP=3306
 	
 	$user	= 'root';			//nazwa konta użytkownika dla bazy szpital

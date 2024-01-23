@@ -2,13 +2,13 @@
 <html lang="pl">
 <head>	
 <meta charset="utf-8">
-<title>Car rental</title>
+<title>Home</title>
 <link rel="stylesheet" type="text/css" href="style/style.css" />
 </head>
 <body>
 	<div class="wrapper">
 	<a href="widoki/wyloguj.php" class="right">Wyloguj</a>
-	<a href="widoki/login.php" class="right">Zaloguj</a>
+	<a href="widoki/logowanie.php" class="right">Zaloguj</a>
 
 	<h1>Car Rental</h1>
 	<nav>
@@ -17,7 +17,7 @@
 			<li><a href="widoki/wynajmij.php">Wynajmij</a></li>
 			<li><a href="widoki/klienci.php">Klienci</a></li>
 			<li><a href="widoki/samochody.php">Samochody</a></li>
-			<li><a href="widoki/użytkownicy.php">Uzytkownicy</a></li>
+			<li><a href="widoki/uzytkownicy.php">Użytkownicy</a></li>
 		</ul>
 	</nav>	
 		<h2>Witaj w aplikacji szpital<h2>
@@ -27,7 +27,7 @@
 				echo '<h2>Jesteś zalogowany</h2>';
 			}
 			else {
-				header("Location:widoki/login.php");
+				header("Location:widoki/logowanie.php");
 			}
 		?>
 		</div>

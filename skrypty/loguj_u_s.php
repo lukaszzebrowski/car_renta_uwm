@@ -2,13 +2,14 @@
 	require '../baza.php';
 	if (isset($_POST['submit'])) {
 		//zapytanie SQL o dane użytkownika
-		$sql = 'SELECT login, haslo, uprawnienia
+		$sql = 'SELECT login_NEP, haslo, stanowiska.nazwa_stanowiska
 				FROM users
-				WHERE login = :login';
+				INNER JOIN stanowiska ON users.stanowisko_ID = stanowiska.ID_stanowiska
+				WHERE login_NEP = :login_NEP';
 		$haslo = $_POST['haslo'];
-		$login = $_POST['login'];
+		$login = $_POST['login_NEP'];
 		$stmt = $pdo->prepare($sql);
-		$stmt->bindValue(':login', $login, PDO::PARAM_STR);
+		$stmt->bindValue(':login_NEP', $login, PDO::PARAM_STR);
 		//$stmt->bindValue(':haslo', $haslo, PDO::PARAM_STR);
 		//wykonanie zapytania SQL
 		$stmt->execute();
@@ -21,15 +22,15 @@
 			if ($autoryzacja) {
 				session_start();
 				$_SESSION['sesja'] = true;
-				$_SESSION['uprawnienia'] = $user['uprawnienia'];
-				echo "Jesteś zalogowany jako: "."<b>".$user['login']."</b>";
+				$_SESSION['nazwa_stanowiska'] = $user['nazwa_stanowiska'];
+				echo "Jesteś zalogowany jako: "."<b>".$user['login_NEP']."</b>";
 			}
 			else {
-				echo "Błędne hasło";
+				echo "Błędne login lub hasło.";
 			}
 		} 
 		else {
-			echo "Błędny login. Nie ma takiego użytkownika.";
+			echo "Błędne login lub hasło.";
 		}
 						
 	}
