@@ -1,6 +1,6 @@
 <?php
 	require '../baza.php';
-	if (isset($_POST['submit'])) {
+	if (isset($_POST['wyszukaj'])) {
 		//zliczenie ilości klienciów o podanym numerze pesel (sprawdzenie czy klienci o podanym numerze pesel istnieje)
 		$sql = 'SELECT Count(nazwisko_klienta)
 				FROM klienci
@@ -30,7 +30,8 @@
 			//jeżeli ilość danego nazwiska i numeru pesel jest różna od 0, wówczas następuje wyszukiwanie danego kliencia
 			$sql3 = 'SELECT imie_klienta, nazwisko_klienta, PESEL 
 					FROM klienci
-					WHERE nazwisko_klienta like :nazwisko_klienta or imie_klienta like :imie_klienta or PESEL = :PESEL';
+					WHERE nazwisko_klienta like :nazwisko_klienta or imie_klienta like :imie_klienta or PESEL = :PESEL
+					ORDER BY nazwisko_klienta';
 			$stmt3 = $pdo -> prepare($sql3);
 			$stmt3->bindValue(':imie_klienta', $_POST['imie_klienta'], PDO::PARAM_STR);
 			$stmt3->bindValue(':nazwisko_klienta', $_POST['nazwisko_klienta'], PDO::PARAM_STR);

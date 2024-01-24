@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>	
 <meta charset="utf-8">
-<title>Samochody</title>
+<title>Klienci</title>
 <link rel="stylesheet" type="text/css" href="../style/style.css" />
 </head>
 <body>
@@ -29,28 +29,69 @@
 			<li><a href="uzytkownicy.php">Użytkownicy</a></li>
 		</ul>
 	</nav>	
-	<h2>Lista samochodów</h2>
-	<table>
-		<tr>
-			<th>Imię pacjenta</th><th>Nazwisko pacjenta</th><th>Numer PESEL</th>
-			<th>Imię lekarza</th><th>Nazwisko lekarza</th><th>Oddział</th><th>Historia choroby</th>
-		</tr>
-		<?php
-		if (isset($_SESSION['sesja'])) {
-		require ('../skrypty/lista_p_s.php');
-		foreach ($pacjenci as $pacjent => $link) {
+	<h2>klienci</h2>
+	<form name="dane" action="samochody.php" method="post">
+		<input type="text" name="imie_klienta" placeholder="podaj imie" style="width:25%;display:inline;text-align:center;"/>
+		<input type="text" name="nazwisko_klienta" placeholder="podaj nazwisko" style="width:25%;display:inline;text-align:center;"/>
+		<input type="number" name="PESEL" placeholder="podaj numer pesel" style="width:25%;display:inline;text-align:center;" /><br>
+		<input type="submit" name="wyszukaj" value="Wyszukaj klienta" style="width:20%;display:inline;"/> 
+		<input type="submit" name="wyswietl_auta" value="Wyświetl wszystkich" style="width:20%;display:inline;"/>
+		<input type="submit" name="dodaj" value="Dodaj klienta" style="width:20%;display:inline;"/>
+		<input type="submit" name="usun" value="Usuń klienta" style="width:20%;display:inline;"/><br>
+
+
+	</form>
+	<?php
+		require ('../skrypty/wyszukaj.php');
+		if (isset($_POST['wyszukaj'])) {
+			if (!empty($klienci)) {
+			?>
+			<table>
+			<tr>
+				<th>Imię klienta</th><th>Nazwisko nazwisko</th><th>PESEL</th>		
+			</tr>
+	<?php
+	}
+}
 		?>
+		<?php
+		
+		foreach ($klienci as $klient => $link) {
+		?>
+
 		<tr>
-			<td><?= $link['imie'] ?></td><td><?= $link['nazwisko'] ?></td><td><?= $link['numer_pesel'] ?></td>
-			<td><?= $link['imie_l'] ?></td><td><?= $link['nazwisko_l'] ?></td>
-			<td><?= $link['oddzial'] ?></td><td><?= $link['historia_choroby'] ?></td>
+			<td><?= $link['imie_klienta'] ?></td><td><?= $link['nazwisko_klienta'] ?></td><td><?= $link['PESEL'] ?></td>
+
 		</tr>
 		<?php
 		}
+		?>
+		
+	</table>
+
+	<?php
+		require ('../skrypty/lista.php');
+		if (isset($_POST['wyswietl_auta'])) {
+			?>
+			<table>
+			<tr>
+				<th>Marka</th><th>Numer rejestracyjny</th><th>Rok produkcji</th><th>Cena wynajmu za dzień</th>		
+			</tr>
+	<?php
 	}
-	else {
-echo 'Proszę się zalogować';
-	}
+		?>
+		<?php
+		
+		foreach ($samo_wszystkie as $sam_wszystkie => $link2) {
+		?>
+
+		<tr>
+			<td><?= $link2['marka'] ?></td><td><?= $link2['numer_rejestracyjny'] ?></td>
+			<td><?= $link2['rok_produkcji']?></td><td><?= $link2['cena_wynajmu_dzien']?></td>
+
+		</tr>
+		<?php
+		}
 		?>
 		
 	</table>

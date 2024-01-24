@@ -31,17 +31,19 @@
 	</nav>	
 	<h2>klienci</h2>
 	<form name="dane" action="klienci.php" method="post">
-		<input type="text" name="imie_klienta" placeholder="podaj imie" style="width:20%;display:inline;text-align:center;"/>
-		lub
-		<input type="text" name="nazwisko_klienta" placeholder="podaj nazwisko" style="width:20%;display:inline;text-align:center;"/>
-		 lub 
-		<input type="number" name="PESEL" placeholder="podaj numer pesel" style="width:20%;display:inline;text-align:center;" />
-		<input type="submit" name="submit" value="Wyszukaj" style="width:20%;display:inline;"/><br>
+		<input type="text" name="imie_klienta" placeholder="podaj imie" style="width:25%;display:inline;text-align:center;"/>
+		<input type="text" name="nazwisko_klienta" placeholder="podaj nazwisko" style="width:25%;display:inline;text-align:center;"/>
+		<input type="number" name="PESEL" placeholder="podaj numer pesel" style="width:25%;display:inline;text-align:center;" /><br>
+		<input type="submit" name="wyszukaj" value="Wyszukaj klienta" style="width:20%;display:inline;"/> 
+		<input type="submit" name="wyswietl" value="Wyświetl wszystkich" style="width:20%;display:inline;"/>
+		<input type="submit" name="dodaj" value="Dodaj klienta" style="width:20%;display:inline;"/>
+		<input type="submit" name="usun" value="Usuń klienta" style="width:20%;display:inline;"/><br>
+
 
 	</form>
 	<?php
 		require ('../skrypty/wyszukaj.php');
-		if (isset($_POST['submit'])) {
+		if (isset($_POST['wyszukaj'])) {
 			if (!empty($klienci)) {
 			?>
 			<table>
@@ -59,6 +61,32 @@
 
 		<tr>
 			<td><?= $link['imie_klienta'] ?></td><td><?= $link['nazwisko_klienta'] ?></td><td><?= $link['PESEL'] ?></td>
+
+		</tr>
+		<?php
+		}
+		?>
+		
+	</table>
+
+	<?php
+		require ('../skrypty/lista.php');
+		if (isset($_POST['wyswietl'])) {
+			?>
+			<table>
+			<tr>
+				<th>Imię klienta</th><th>Nazwisko nazwisko</th><th>PESEL</th>		
+			</tr>
+	<?php
+	}
+		?>
+		<?php
+		
+		foreach ($klienci_wszyscy as $klient_wszyscy => $link2) {
+		?>
+
+		<tr>
+			<td><?= $link2['imie_klienta'] ?></td><td><?= $link2['nazwisko_klienta'] ?></td><td><?= $link2['PESEL'] ?></td>
 
 		</tr>
 		<?php
