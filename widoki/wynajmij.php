@@ -8,8 +8,17 @@
 <body>
 	<div class="wrapper">
 	<a href="wyloguj.php" class="right">Wyloguj</a>
-	<a href="logowanie.php" class="right">Zaloguj</a>
-
+	<?php
+		session_start();
+		if (isset($_SESSION['sesja'])) {
+		?>
+	<a href="konto.php" class="right">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
+	<?php
+		}
+		else {
+			header("Location:logowanie.php");
+		}
+		?>
 	<h1>Car rental</h1>
 	<nav>
 		<ul>
@@ -20,9 +29,8 @@
 			<li><a href="uzytkownicy.php">Użytkownicy</a></li>
 		</ul>
         </nav>	
-	<h2>Zarejestruj pacjenta</h2>
+	<h2>Wynajmij</h2>
 	<?php
-		session_start();
 		if(isset($_SESSION['sesja'])) {
 		 	if ($_SESSION['nazwa_stanowiska'] == 'Administrator') {
 			require '../skrypty/wczytywanie_l_s.php';

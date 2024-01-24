@@ -8,8 +8,17 @@
 <body>
 	<div class="wrapper">
 	<a href="wyloguj.php" class="right">Wyloguj</a>
-	<a href="logowanie.php" class="right">Zaloguj</a>
-
+	<?php
+		session_start();
+		if (isset($_SESSION['sesja'])) {
+		?>
+	<a href="konto.php" class="right">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
+	<?php
+		}
+		else {
+			header("Location:logowanie.php");
+		}
+		?>
 	<h1>Car rental</h1>
 	<nav>
 		<ul>
@@ -20,14 +29,13 @@
 			<li><a href="uzytkownicy.php">Użytkownicy</a></li>
 		</ul>
 	</nav>	
-	<h2>Lista pacjentów</h2>
+	<h2>Lista samochodów</h2>
 	<table>
 		<tr>
 			<th>Imię pacjenta</th><th>Nazwisko pacjenta</th><th>Numer PESEL</th>
 			<th>Imię lekarza</th><th>Nazwisko lekarza</th><th>Oddział</th><th>Historia choroby</th>
 		</tr>
 		<?php
-		session_start();
 		if (isset($_SESSION['sesja'])) {
 		require ('../skrypty/lista_p_s.php');
 		foreach ($pacjenci as $pacjent => $link) {

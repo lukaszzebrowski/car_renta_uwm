@@ -7,23 +7,12 @@
 </head>
 <body>
 	<div class="wrapper">
-	<a href="wyloguj.php" class="right">Wyloguj</a>
-	<a href="logowanie.php" class="right">Zaloguj</a>
-
 	<h1>Car rental</h1>
-	<nav>
-		<ul>
-			<li><a href="../index.php">Home</a></li>
-			<li><a href="wynajmij.php">Wynajmij</a></li>
-			<li><a href="klienci.php">Klienci</a></li>
-			<li><a href="samochody.php">Samochody</a></li>
-			<li><a href="uzytkownicy.php">Użytkownicy</a></li>
-		</ul>
-	</nav>	
 	<h3>
 	<?php
 		require '../skrypty/wyloguj_u_s.php';
 	?>
+	<h2><a href="logowanie.php" class="right">Zaloguj ponownie</a></h2>
 	<h3>
 	</div>
 </body>

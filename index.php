@@ -8,8 +8,14 @@
 <body>
 	<div class="wrapper">
 	<a href="widoki/wyloguj.php" class="right">Wyloguj</a>
-	<a href="widoki/logowanie.php" class="right">Zaloguj</a>
-
+	<?php
+		session_start();
+		if (isset($_SESSION['sesja'])) {
+		?>
+	<a href="widoki/konto.php" class="right">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
+	<?php
+		}
+		?>
 	<h1>Car Rental</h1>
 	<nav>
 		<ul>
@@ -20,11 +26,12 @@
 			<li><a href="widoki/uzytkownicy.php">Użytkownicy</a></li>
 		</ul>
 	</nav>	
-		<h2>Witaj w aplikacji szpital<h2>
+		<h2>Witaj w aplikacji<h2>
 		<?php
-			session_start();
 			if (isset($_SESSION['sesja'])) {
-				echo '<h2>Jesteś zalogowany</h2>';
+				?>
+				<h2>Witaj <b><?=$_SESSION['imie_uzytkownika'];?> <?=$_SESSION['nazwisko_uzytkownika'];?></b></h2>
+				<?php
 			}
 			else {
 				header("Location:widoki/logowanie.php");

@@ -8,8 +8,17 @@
 <body>
 	<div class="wrapper">
 	<a href="wyloguj.php" class="right">Wyloguj</a>
-	<a href="logowanie.php" class="right">Zaloguj</a>
-
+	<?php
+		session_start();
+		if (isset($_SESSION['sesja'])) {
+		?>
+	<a href="konto.php" class="right">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
+	<?php
+		}
+		else {
+			header("Location:logowanie.php");
+		}
+		?>
 	<h1>Car rental</h1>
 	<nav>
 		<ul>
@@ -20,28 +29,23 @@
 			<li><a href="uzytkownicy.php">Użytkownicy</a></li>
 		</ul>
 	</nav>	
-	<h2>Lista pacjentów</h2>
+	<h2>Moje konto</h2>
 	<table>
-		<tr>
-			<th>Imię pacjenta</th><th>Nazwisko pacjenta</th><th>Numer PESEL</th>
-			<th>Imię lekarza</th><th>Nazwisko lekarza</th><th>Oddział</th><th>Historia choroby</th>
-		</tr>
 		<?php
-		session_start();
 		if (isset($_SESSION['sesja'])) {
-		require ('../skrypty/lista_p_s.php');
-		foreach ($pacjenci as $pacjent => $link) {
+
 		?>
-		<tr>
-			<td><?= $link['imie'] ?></td><td><?= $link['nazwisko'] ?></td><td><?= $link['numer_pesel'] ?></td>
-			<td><?= $link['imie_l'] ?></td><td><?= $link['nazwisko_l'] ?></td>
-			<td><?= $link['oddzial'] ?></td><td><?= $link['historia_choroby'] ?></td>
-		</tr>
-		<?php
-		}
-	}
-	else {
-echo 'Proszę się zalogować';
+		<dl>
+  			<dt>Imię użytkownika:</dt>
+  			<dd><b><?=$_SESSION['imie_uzytkownika'];?></b></dd>
+  			<dt>Nazwisko użytkownia:</dt>
+  			<dd><b><?=$_SESSION['nazwisko_uzytkownika'];?></b></dd>
+			<dt>Login (NEP) użytkownika:</dt>
+  			<dd><b><?=$_SESSION['login_NEP'];?></b></dd>
+			<dt>Stanowisko:</dt>
+  			<dd><b><?=$_SESSION['nazwa_stanowiska'];?></b></dd>
+		</dl>
+		<?php	
 	}
 		?>
 		

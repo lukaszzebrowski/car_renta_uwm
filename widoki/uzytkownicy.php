@@ -8,8 +8,17 @@
 <body>
 	<div class="wrapper">
 	<a href="wyloguj.php" class="right">Wyloguj</a>
-	<a href="logowanie.php" class="right">Zaloguj</a>
-
+	<?php
+		session_start();
+		if (isset($_SESSION['sesja'])) {
+		?>
+	<a href="konto.php" class="right">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
+	<?php
+		}
+		else {
+			header("Location:logowanie.php");
+		}
+		?>
 	<h1>Car rental</h1>
 	<nav>
 		<ul>
@@ -21,7 +30,7 @@
 		</ul>
 	</nav>	
 	<h2>Rejestracja nowego użytkownika</h2>
-	//<?php
+	<?php
 		//session_start();
 		require '../skrypty/wczytywanie.php';
 		//if(isset($_SESSION['sesja'])) {
