@@ -29,28 +29,40 @@
 			<li><a href="uzytkownicy.php">Użytkownicy</a></li>
 		</ul>
 	</nav>	
-	<h2>Lista klientów</h2>
-	<table>
-		<tr>
-			<th>Imię pacjenta</th><th>Nazwisko pacjenta</th><th>Numer PESEL</th>
-			<th>Imię lekarza</th><th>Nazwisko lekarza</th><th>Oddział</th><th>Historia choroby</th>
-		</tr>
-		<?php
-		if (isset($_SESSION['sesja'])) {
-		require ('../skrypty/lista_p_s.php');
-		foreach ($pacjenci as $pacjent => $link) {
+	<h2>klienci</h2>
+	<form name="dane" action="klienci.php" method="post">
+		<input type="text" name="imie_klienta" placeholder="podaj imie" style="width:20%;display:inline;text-align:center;"/>
+		lub
+		<input type="text" name="nazwisko_klienta" placeholder="podaj nazwisko" style="width:20%;display:inline;text-align:center;"/>
+		 lub 
+		<input type="number" name="PESEL" placeholder="podaj numer pesel" style="width:20%;display:inline;text-align:center;" />
+		<input type="submit" name="submit" value="Wyszukaj" style="width:20%;display:inline;"/><br>
+
+	</form>
+	<?php
+		require ('../skrypty/wyszukaj.php');
+		if (isset($_POST['submit'])) {
+			if (!empty($klienci)) {
+			?>
+			<table>
+			<tr>
+				<th>Imię klienta</th><th>Nazwisko nazwisko</th><th>PESEL</th>		
+			</tr>
+	<?php
+	}
+}
 		?>
+		<?php
+		
+		foreach ($klienci as $klient => $link) {
+		?>
+
 		<tr>
-			<td><?= $link['imie'] ?></td><td><?= $link['nazwisko'] ?></td><td><?= $link['numer_pesel'] ?></td>
-			<td><?= $link['imie_l'] ?></td><td><?= $link['nazwisko_l'] ?></td>
-			<td><?= $link['oddzial'] ?></td><td><?= $link['historia_choroby'] ?></td>
+			<td><?= $link['imie_klienta'] ?></td><td><?= $link['nazwisko_klienta'] ?></td><td><?= $link['PESEL'] ?></td>
+
 		</tr>
 		<?php
 		}
-	}
-	else {
-echo 'Proszę się zalogować';
-	}
 		?>
 		
 	</table>
