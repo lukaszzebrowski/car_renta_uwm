@@ -26,6 +26,7 @@
 			<li><a href="widoki/wynajmij.php">Wynajmij</a></li>
 			<li><a href="widoki/klienci.php">Klienci</a></li>
 			<li><a href="widoki/samochody.php">Samochody</a></li>
+			<li><a href="widoki/statystyki.php">Statystyki</a></li>
 			<?php
 			}
 			else {
@@ -48,5 +49,15 @@
 			}
 		?>
 		</div>
+		<footer>
+        <div>
+            &copy; <?= date('Y') ?> Łukasz Żebrowski
+        </div>
+        <div>
+            <a href="#">Kontakt</a>
+            <a href="#">Regulamin</a>
+            <!-- Dodaj inne linki, jeśli są potrzebne -->
+        </div>
+    </footer>
 </body>
 </html>

@@ -30,6 +30,7 @@
 			<li><a href="wynajmij.php">Wynajmij</a></li>
 			<li><a href="klienci.php">Klienci</a></li>
 			<li><a href="samochody.php">Samochody</a></li>
+			<li><a href="statystyki.php">Statystyki</a></li>
 			<?php
 			}
 			else {
@@ -67,7 +68,7 @@
 			<input type="submit" name="submit" value="rejestruj" />
 		</form>
 		<?php
-			require '../skrypty/rejestruj_u_s.php';
+			require '../skrypty/rejestruj.php';
 		}
 		else {
 			echo "Nie masz uprawnień.";
@@ -76,5 +77,15 @@
 		</div>
 	
 	</div>
+	<footer>
+        <div>
+            &copy; <?= date('Y') ?> Łukasz Żebrowski
+        </div>
+        <div>
+            <a href="#">Kontakt</a>
+            <a href="#">Regulamin</a>
+            <!-- Dodaj inne linki, jeśli są potrzebne -->
+        </div>
+    </footer>
 </body>
 </html>

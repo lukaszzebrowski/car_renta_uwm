@@ -19,10 +19,20 @@
 		<br/>
 		<input type="submit" name="submit" value="Zaloguj" />
 		<?php
-		require '../skrypty/loguj_u_s.php';
+		require '../skrypty/loguj.php';
 		require '../baza.php';
 		?>
 		</form>
 	</div>
+	<footer>
+        <div>
+            &copy; <?= date('Y') ?> Łukasz Żebrowski
+        </div>
+        <div>
+            <a href="#">Kontakt</a>
+            <a href="#">Regulamin</a>
+            <!-- Dodaj inne linki, jeśli są potrzebne -->
+        </div>
+    </footer>
 </body>
 </html>

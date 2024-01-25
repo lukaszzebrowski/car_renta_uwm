@@ -30,6 +30,7 @@
 			<li><a href="wynajmij.php">Wynajmij</a></li>
 			<li><a href="klienci.php">Klienci</a></li>
 			<li><a href="samochody.php">Samochody</a></li>
+			<li><a href="statystyki.php">Statystyki</a></li>
 			<?php
 			}
 			else {
@@ -41,7 +42,7 @@
 		</ul>
 	</nav>	
 
-	<h2>klienci</h2>
+	<h2>Klienci</h2>
 	<?php
 	if ($_SESSION['nazwa_stanowiska'] == 'Kierownik' || $_SESSION['nazwa_stanowiska'] == 'Pracownik' || $_SESSION['nazwa_stanowiska'] == 'GOD') {
 		?>	
@@ -92,7 +93,9 @@
 		?>
 
 		<tr>
-			<td><?= $link['imie_klienta'] ?></td><td><?= $link['nazwisko_klienta'] ?></td><td><?= $link['PESEL'] ?></td>
+			<td><?= $link['imie_klienta'] ?></td>
+			<td><?= $link['nazwisko_klienta'] ?></td>
+			<td><?= $link['PESEL'] ?></td>
 
 		</tr>
 		<?php
@@ -131,5 +134,14 @@
 		
 	</table>
 	</div>
+	<footer>
+        <div>
+            &copy; <?= date('Y') ?> Łukasz Żebrowski
+        </div>
+        <div>
+            <a href="#">Kontakt</a>
+            <a href="#">Regulamin</a>
+        </div>
+    </footer>
 	</body>
 </html>
