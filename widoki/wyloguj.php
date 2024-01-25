@@ -6,14 +6,11 @@
 <link rel="stylesheet" type="text/css" href="../style/style.css" />
 </head>
 <body>
-	<div class="wrapper">
+	<div>
 	<h1>Car rental</h1>
-	<h3>
-	<?php
-		require '../skrypty/wyloguj_u_s.php';
-	?>
-	<h2><a href="logowanie.php" class="right">Zaloguj ponownie</a></h2>
-	<h3>
+	<h3>Jesteś wylogowany<h3>
+	<h2><a href="logowanie.php">Zaloguj ponownie</a></h2>
+	
 	</div>
 	<footer>
         <div>

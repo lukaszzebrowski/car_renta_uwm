@@ -157,7 +157,6 @@
         <div>
             <a href="#">Kontakt</a>
             <a href="#">Regulamin</a>
-            <!-- Dodaj inne linki, jeśli są potrzebne -->
         </div>
     </footer>
 	</body>

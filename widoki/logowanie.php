@@ -11,7 +11,7 @@
 	<h1>Car rental</h1>
 	
 	<h2>Logowanie do serwisu</h2>
-	<div class="left" style="margin-left:150px;padding:30px 10px 0px 10px;">
+	<div>
 		<form action="logowanie.php" method="post"> 
 		<input type="text" name="login_NEP" placeholder="podaj login" /> 
 		<br/> 
@@ -31,7 +31,6 @@
         <div>
             <a href="#">Kontakt</a>
             <a href="#">Regulamin</a>
-            <!-- Dodaj inne linki, jeśli są potrzebne -->
         </div>
     </footer>
 </body>

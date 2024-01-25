@@ -7,12 +7,12 @@
 </head>
 <body>
 	<div class="wrapper">
-	<a href="widoki/wyloguj.php" class="right">Wyloguj</a>
+	<a href="widoki/wyloguj.php">Wyloguj</a>
 	<?php
 		session_start();
 		if (isset($_SESSION['sesja'])) {
 		?>
-	<a href="widoki/konto.php" class="right">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
+	<a href="widoki/konto.php">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
 	<?php
 		}
 		?>
@@ -56,7 +56,6 @@
         <div>
             <a href="#">Kontakt</a>
             <a href="#">Regulamin</a>
-            <!-- Dodaj inne linki, jeśli są potrzebne -->
         </div>
     </footer>
 </body>

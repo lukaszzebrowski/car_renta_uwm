@@ -7,12 +7,12 @@
 </head>
 <body>
 	<div class="wrapper">
-	<a href="wyloguj.php" class="right">Wyloguj</a>
+	<a href="wyloguj.php">Wyloguj</a>
 	<?php
 		session_start();
 		if (isset($_SESSION['sesja'])) {
 		?>
-	<a href="konto.php" class="right">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
+	<a href="konto.php">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
 	<?php
 		}
 		else {
@@ -48,7 +48,7 @@
 			require '../skrypty/wczytywanie.php';
 		?>
 		<form name="dane" action="wynajmij.php" method="post">
-		<div class="left" style="margin-left:150px;padding:30px 10px 0px 10px;">
+		<div class="left">
 		<select name="klient">
 			<option value="" disabled selected hidden>wybierz klienta</option>
 			<?php
@@ -108,7 +108,6 @@
         <div>
             <a href="#">Kontakt</a>
             <a href="#">Regulamin</a>
-            <!-- Dodaj inne linki, jeśli są potrzebne -->
         </div>
     </footer>
 </body>

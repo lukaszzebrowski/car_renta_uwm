@@ -6,13 +6,13 @@
 <link rel="stylesheet" type="text/css" href="../style/style.css" />
 </head>
 <body>
-	<div class="wrapper">
-	<a href="wyloguj.php" class="right">Wyloguj</a>
+	<div>
+	<a href="wyloguj.php">Wyloguj</a>
 	<?php
 		session_start();
 		if (isset($_SESSION['sesja'])) {
 		?>
-	<a href="konto.php" class="right">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
+	<a href="konto.php">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
 	<?php
 		}
 		else {
@@ -46,7 +46,7 @@
 		require '../skrypty/wczytywanie.php';
 		if ($_SESSION['nazwa_stanowiska'] == 'Administrator' || $_SESSION['nazwa_stanowiska'] == 'GOD') {
 			?>
-		<div class="left" style="margin-left:150px;padding:30px 10px 0px 10px;">
+		<div>
 		<form action="uzytkownicy.php" method="post">
 			<p><input type="text" name="imie_uzytkownika" placeholder="podaj imie" required /></p>
 			<p><input type="text" name="nazwisko_uzytkownika" placeholder="podaj nazwisko" required /></p>
@@ -84,7 +84,6 @@
         <div>
             <a href="#">Kontakt</a>
             <a href="#">Regulamin</a>
-            <!-- Dodaj inne linki, jeśli są potrzebne -->
         </div>
     </footer>
 </body>

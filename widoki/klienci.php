@@ -6,13 +6,13 @@
 <link rel="stylesheet" type="text/css" href="../style/style.css" />
 </head>
 <body>
-	<div class="wrapper">
-	<a href="wyloguj.php" class="right">Wyloguj</a>
+	<div>
+	<a href="wyloguj.php">Wyloguj</a>
 	<?php
 		session_start();
 		if (isset($_SESSION['sesja'])) {
 		?>
-	<a href="konto.php" class="right">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
+	<a href="konto.php">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
 	<?php
 		}
 		else {

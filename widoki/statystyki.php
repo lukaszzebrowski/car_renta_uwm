@@ -7,12 +7,12 @@
 </head>
 <body>
 	<div class="wrapper">
-	<a href="wyloguj.php" class="right">Wyloguj</a>
+	<a href="wyloguj.php">Wyloguj</a>
 	<?php
 		session_start();
 		if (isset($_SESSION['sesja'])) {
 		?>
-	<a href="konto.php" class="right">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
+	<a href="konto.php">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
 	<?php
 		}
 		else {
@@ -48,7 +48,7 @@
         require '../skrypty/statystyka.php';
         ?>
         <h3>Ilości i wartości wypożyczonych samochodów po każdym dniu</h3>
-        <table border="1">
+        <table>
         <tr>
             <th>Data</th>
             <th>Ilość wypożyczeń</th>
@@ -67,9 +67,8 @@
     }
      ?>
      	</table>
-
          <h3>Ilości i wartości wypożyczonych samochodów po każdym miesiącu</h3>
-        <table border="1">
+        <table>
         <tr>
             <th>Miesiąc</th>
             <th>Ilość wypożyczeń</th>
@@ -88,10 +87,8 @@
      ?>
      	</table>
 
-         </table>
-
         <h3>Ilości i wartości wypożyczonych samochodów według koloru po każdym miesiącu</h3>
-        <table border="1">
+        <table>
         <tr>
         <th>Data</th>
         <th>Marka</th>
@@ -113,7 +110,7 @@
         </table>
 
         <h3>Ilości i wartości wypożyczonych samochodów według koloru po każdym miesiącu</h3>
-        <table border="1">
+        <table>
         <tr>
         <th>Miesiąc</th>
         <th>Kolor</th>
@@ -135,7 +132,7 @@
         </table>
 
         <h3>Marka samochodu najczęściej wypożyczanego w miesiącu</h3>
-        <table border="1">
+        <table>
         <tr>
         <th>Miesiąc</th>
         <th>Marka</th>
@@ -161,7 +158,6 @@
         <div>
             <a href="#">Kontakt</a>
             <a href="#">Regulamin</a>
-            <!-- Dodaj inne linki, jeśli są potrzebne -->
         </div>
     </footer>
 	</body>
