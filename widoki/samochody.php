@@ -21,15 +21,29 @@
 		?>
 	<h1>Car rental</h1>
 	<nav>
-		<ul>
+	<ul>
+
 			<li><a href="../index.php">Home</a></li>
+			<?php
+			if ($_SESSION['nazwa_stanowiska'] !== 'Administrator') {
+				?>
 			<li><a href="wynajmij.php">Wynajmij</a></li>
 			<li><a href="klienci.php">Klienci</a></li>
 			<li><a href="samochody.php">Samochody</a></li>
+			<?php
+			}
+			else {
+			?>
 			<li><a href="uzytkownicy.php">Użytkownicy</a></li>
+			<?php
+			}
+			?>
 		</ul>
 	</nav>	
 	<h2>Samochody</h2>
+	<?php
+	if ($_SESSION['nazwa_stanowiska'] == 'Kierownik' || $_SESSION['nazwa_stanowiska'] == 'Pracownik' || $_SESSION['nazwa_stanowiska'] == 'GOD') {
+		?>	
 	<form name="dane" action="samochody.php" method="post">
 		<input type="text" name="marka" placeholder="podaj marke" style="width:15%;display:inline;text-align:center;" />
 		<input type="text" name="kolor" placeholder="podaj kolor" style="width:15%;display:inline;text-align:center;" />
@@ -38,14 +52,26 @@
 		<input type="number" name="cena_wynajmu_dzien" placeholder="podaj cenę wynajmu za dzień" style="width:15%;display:inline;text-align:center;"/><br>
 		<input type="submit" name="wyszukaj_auta" value="Wyszukaj samochód" style="width:19%;display:inline;"/> 
 		<input type="submit" name="wyswietl_auta" value="Wyświetl wszystkie" style="width:19%;display:inline;"/>
-		<input type="submit" name="dodaj_auto" value="Dodaj samochód" style="width:19%;display:inline;"/>
+		<?php
+	if ($_SESSION['nazwa_stanowiska'] == 'Kierownik' ||  $_SESSION['nazwa_stanowiska'] == 'GOD') {
+		?>
+		<div>
+		<input type="text" name="marka" placeholder="podaj marke" style="width:15%;display:inline;text-align:center;" />
+		<input type="text" name="kolor" placeholder="podaj kolor" style="width:15%;display:inline;text-align:center;" />
+		<input type="text" name="numer_rejestracyjny" placeholder="podaj numer rejestracyjny" style="width:15%;display:inline;text-align:center;"/>
+		<input type="number" name="rok_produkcji" placeholder="podaj rok produkcji" style="width:15%;display:inline;text-align:center;"/>
+		<input type="number" name="cena_wynajmu_dzien" placeholder="podaj cenę wynajmu za dzień" style="width:15%;display:inline;text-align:center;"/><br>
+		<input type="submit" name="dodaj_auto" value="Dodaj samochód" style="width:19%;display:inline;"/><br>
+		</div>
+		<div>
+		<input type="text" name="numer_rejestracyjny" placeholder="podaj numer rejestracyjny" style="width:15%;display:inline;text-align:center;"/><br>
 		<input type="submit" name="usun_auto" value="Usuń samochód" style="width:19%;display:inline;"/><br>
-
+		</div>
 		<?php
 			require ('../skrypty/usun.php');
-			require ('../skrypty/dodaj.php');	
+			require ('../skrypty/dodaj.php');
+	}	
 		?>
-
 
 	</form>
 	<?php
@@ -59,7 +85,8 @@
 				<th>Kolor</th>
 				<th>Numer rejestracyjny</th>
 				<th>Rok produkcji</th>
-				<th>Cena wynajmu za dzień</th>		
+				<th>Cena wynajmu za dzień</th>	
+				<th>Data wypożyczenia</th>		
 			</tr>
 	<?php
 	}
@@ -76,6 +103,7 @@
 		<td><?= $link['numer_rejestracyjny'] ?></td>
 		<td><?= $link['rok_produkcji']?></td>
 		<td><?= $link['cena_wynajmu_dzien']?></td>
+		<td><?= $link['Data_wypożyczenia']?></td>
 		</tr>
 		<?php
 		}
@@ -93,7 +121,8 @@
 				<th>Kolor</th>
 				<th>Numer rejestracyjny</th>
 				<th>Rok produkcji</th>
-				<th>Cena wynajmu za dzień</th>		
+				<th>Cena wynajmu za dzień</th>
+				<th>Data wypożyczenia</th>		
 			</tr>
 	<?php
 	}
@@ -108,9 +137,14 @@
 		<td><?= $link2['numer_rejestracyjny'] ?></td>
 		<td><?= $link2['rok_produkcji']?></td>
 		<td><?= $link2['cena_wynajmu_dzien']?></td>
+		<td><?= $link['Data_wypożyczenia']?></td>
 		</tr>
 		<?php
 		}
+	}
+	else {
+		echo "Nie masz uprawnień.";
+	}
 		?>
 		
 	</table>

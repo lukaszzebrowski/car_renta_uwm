@@ -20,10 +20,20 @@
 	<nav>
 		<ul>
 			<li><a href="index.php">Home</a></li>
+			<?php
+			if ($_SESSION['nazwa_stanowiska'] !== 'Administrator') {
+				?>
 			<li><a href="widoki/wynajmij.php">Wynajmij</a></li>
 			<li><a href="widoki/klienci.php">Klienci</a></li>
 			<li><a href="widoki/samochody.php">Samochody</a></li>
+			<?php
+			}
+			else {
+			?>
 			<li><a href="widoki/uzytkownicy.php">Użytkownicy</a></li>
+			<?php
+			}
+			?>
 		</ul>
 	</nav>	
 		<h2>Witaj w aplikacji<h2>

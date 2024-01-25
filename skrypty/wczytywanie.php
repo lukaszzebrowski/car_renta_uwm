@@ -3,7 +3,8 @@
 
 //pobranie listy lekarzy
 	$sql = 'SELECT ID_stanowiska, nazwa_stanowiska
-			FROM stanowiska';
+			FROM stanowiska
+			ORDER BY ID_stanowiska';
 	$zapytanie = $pdo->query($sql);
 	$stanowiska = $zapytanie->fetchAll();
 

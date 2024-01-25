@@ -21,20 +21,30 @@
 		?>
 	<h1>Car rental</h1>
 	<nav>
-		<ul>
+	<ul>
+
 			<li><a href="../index.php">Home</a></li>
+			<?php
+			if ($_SESSION['nazwa_stanowiska'] !== 'Administrator') {
+				?>
 			<li><a href="wynajmij.php">Wynajmij</a></li>
 			<li><a href="klienci.php">Klienci</a></li>
 			<li><a href="samochody.php">Samochody</a></li>
+			<?php
+			}
+			else {
+			?>
 			<li><a href="uzytkownicy.php">Użytkownicy</a></li>
+			<?php
+			}
+			?>
 		</ul>
 	</nav>	
 	<h2>Rejestracja nowego użytkownika</h2>
 	<?php
-		//session_start();
 		require '../skrypty/wczytywanie.php';
-		//if(isset($_SESSION['sesja'])) {
-		//?>
+		if ($_SESSION['nazwa_stanowiska'] == 'Administrator' || $_SESSION['nazwa_stanowiska'] == 'GOD') {
+			?>
 		<div class="left" style="margin-left:150px;padding:30px 10px 0px 10px;">
 		<form action="uzytkownicy.php" method="post">
 			<p><input type="text" name="imie_uzytkownika" placeholder="podaj imie" required /></p>
@@ -58,10 +68,10 @@
 		</form>
 		<?php
 			require '../skrypty/rejestruj_u_s.php';
-		//}
-		//else {
-			//echo "Proszę się zalogować";
-		//}
+		}
+		else {
+			echo "Nie masz uprawnień.";
+		}
 		?>
 		</div>
 	

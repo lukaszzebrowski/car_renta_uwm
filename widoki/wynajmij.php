@@ -21,16 +21,28 @@
 		?>
 	<h1>Car rental</h1>
 	<nav>
-		<ul>
+	<ul>
+
 			<li><a href="../index.php">Home</a></li>
+			<?php
+			if ($_SESSION['nazwa_stanowiska'] !== 'Administrator') {
+				?>
 			<li><a href="wynajmij.php">Wynajmij</a></li>
 			<li><a href="klienci.php">Klienci</a></li>
 			<li><a href="samochody.php">Samochody</a></li>
+			<?php
+			}
+			else {
+			?>
 			<li><a href="uzytkownicy.php">Użytkownicy</a></li>
+			<?php
+			}
+			?>
 		</ul>
         </nav>	
 	<h2>Wynajmij</h2>
 	<?php
+	if ($_SESSION['nazwa_stanowiska'] == 'Kierownik' || $_SESSION['nazwa_stanowiska'] == 'Pracownik' || $_SESSION['nazwa_stanowiska'] == 'GOD') {
 		if(isset($_SESSION['sesja'])) {
 			require '../skrypty/wczytywanie.php';
 		?>
@@ -82,6 +94,10 @@
 		else {
 			echo "Proszę się zalogować";
 		}
+	}
+	else {
+		echo "Nie masz uprawnień.";
+	}
 		?>
 </div>
 </body>
