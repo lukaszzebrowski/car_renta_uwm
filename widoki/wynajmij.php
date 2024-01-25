@@ -32,83 +32,52 @@
 	<h2>Wynajmij</h2>
 	<?php
 		if(isset($_SESSION['sesja'])) {
-		 	if ($_SESSION['nazwa_stanowiska'] == 'Administrator') {
-			require '../skrypty/wczytywanie_l_s.php';
+			require '../skrypty/wczytywanie.php';
 		?>
-		<form name="dane" action="dodaj_p.php" method="post">
-			<div class="left">
-			<p><input type="text" name="imie" required placeholder="podaj imię" /></p>
-			<p><input type="text" name="nazwisko" required placeholder="podaj nazwisko" /></p>
-			<p><input type="number" name="numer_pesel" required  placeholder="podaj numer pesel" /></p>
-			<select name="id_miejscowosc" placeholder="podaj miejscowość" style="float:left">
-				<option value="" disabled selected hidden>wybierz miejscowość</option>
+		<form name="dane" action="wynajmij.php" method="post">
+		<div class="left" style="margin-left:150px;padding:30px 10px 0px 10px;">
+		<select name="klient">
+			<option value="" disabled selected hidden>wybierz klienta</option>
 			<?php
-			foreach ($m as $mi => $link) {
-				$mi = $mi+1;
+			foreach ($klienci as $klient => $link) {
+				$klient = $klient+1;
 				?>
+			  <option value=<?=$klient ?> ><?=$klient ?>-<?=$link['imie_klienta'] ?> <?=$link['nazwisko_klienta'] ?> <?=$link['PESEL'] ?></option>
+			<?php
+			}
+			?>
+			</select>
 
-			  <option value=<?=$mi ?> ><?=$mi ?>-<?=$link['miejscowosc'] ?></option>
+			<select name="samochody">
+			<option value="" disabled selected hidden>wybierz samochód</option>
+			<?php
+			foreach ($samochody as $samochod => $link) {
+				$samochod = $samochod+1;
+				?>
+			  <option value=<?=$samochod ?> ><?=$samochod ?>-<?=$link['marka'] ?> | <?=$link['kolor'] ?> | 
+			  <?=$link['numer_rejestracyjny'] ?> | <?=$link['rok_produkcji'] ?> | <?=$link['cena_wynajmu_dzien'] ?></option>
 			<?php
 			}
 			?>
 			</select>
 
 			<p>
-			<select name="id_wiek">
-			<option value="" disabled selected hidden>wybierz wiek</option>
-			<?php
-			foreach ($w as $wi => $link) {
-				$wi = $wi+1;
-				?>
-			  <option value=<?=$wi ?> ><?=$link['wiek'] ?></option>
-			<?php
-			}
-			?>
-			</select>
+			<label for="data">Wybierz datę wypożyczenia:</label>
+    		<input type="date" id="data_wypozyczenia" name="data_wypozyczenia" required>
+			<p>
+			<label for="data">Wybierz datę zwrotu:</label>
+    		<input type="date" id="data_zwrotu" name="data_zwrotu" required>
+			<p>
+			
+			<input type="submit" name="wynajmij" value="Wynajmij" />
+			<input type="reset" name="reset" value="Reset" />
 			</div>
-
-			<div class="right">
-			<p>
-			<select name="id_oddzial">
-			<option value="" disabled selected hidden>wybierz oddział</option>
 			<?php
-			foreach ($o as $od => $link) {
-				$od = $od+1;
-				?>
-			  <option value=<?=$od ?> ><?=$od ?>-<?=$link['oddzial'] ?></option>
-			<?php
-			}
+			require '../skrypty/dodaj.php';
 			?>
-			</select>
-
-			<p>
-			<select name="id_lekarz">
-			<option value="" disabled selected hidden>wybierz lekarza</option>
-			<?php
-			foreach ($l as $lek => $link) {
-				$lek = $lek+1;
-				?>
-			  <option value=<?=$lek ?> ><?=$lek ?>-<?=$link['imie_l'] ?> <?=$link['nazwisko_l'] ?> </option>
-			<?php
-			}
-			?>
-			</select>
-
-			<p><textarea name="historia_choroby" required placeholder="historia choroby" ></textarea></p>
-
-			</div>
-			<input type="submit" name="submit" value="Dodaj" style="float:right;width:10%;margin:5% 2% 0% 0%;border:0px solid black;" />
 		</form>
-		<div style="clear:both;">
+
 		<?php
-			require '../skrypty/dodaj_p_s.php';
-		?>
-		</div>
-		<?php
-		}
-		else {
-			echo 'Nie masz wystarczających uprawnień';
-		}
 	}
 		else {
 			echo "Proszę się zalogować";

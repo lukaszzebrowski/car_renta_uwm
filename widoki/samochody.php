@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>	
 <meta charset="utf-8">
-<title>Klienci</title>
+<title>Samochody</title>
 <link rel="stylesheet" type="text/css" href="../style/style.css" />
 </head>
 <body>
@@ -29,26 +29,37 @@
 			<li><a href="uzytkownicy.php">Użytkownicy</a></li>
 		</ul>
 	</nav>	
-	<h2>klienci</h2>
+	<h2>Samochody</h2>
 	<form name="dane" action="samochody.php" method="post">
-		<input type="text" name="imie_klienta" placeholder="podaj imie" style="width:25%;display:inline;text-align:center;"/>
-		<input type="text" name="nazwisko_klienta" placeholder="podaj nazwisko" style="width:25%;display:inline;text-align:center;"/>
-		<input type="number" name="PESEL" placeholder="podaj numer pesel" style="width:25%;display:inline;text-align:center;" /><br>
-		<input type="submit" name="wyszukaj" value="Wyszukaj klienta" style="width:20%;display:inline;"/> 
-		<input type="submit" name="wyswietl_auta" value="Wyświetl wszystkich" style="width:20%;display:inline;"/>
-		<input type="submit" name="dodaj" value="Dodaj klienta" style="width:20%;display:inline;"/>
-		<input type="submit" name="usun" value="Usuń klienta" style="width:20%;display:inline;"/><br>
+		<input type="text" name="marka" placeholder="podaj marke" style="width:15%;display:inline;text-align:center;" />
+		<input type="text" name="kolor" placeholder="podaj kolor" style="width:15%;display:inline;text-align:center;" />
+		<input type="text" name="numer_rejestracyjny" placeholder="podaj numer rejestracyjny" style="width:15%;display:inline;text-align:center;"/>
+		<input type="number" name="rok_produkcji" placeholder="podaj rok produkcji" style="width:15%;display:inline;text-align:center;"/>
+		<input type="number" name="cena_wynajmu_dzien" placeholder="podaj cenę wynajmu za dzień" style="width:15%;display:inline;text-align:center;"/><br>
+		<input type="submit" name="wyszukaj_auta" value="Wyszukaj samochód" style="width:19%;display:inline;"/> 
+		<input type="submit" name="wyswietl_auta" value="Wyświetl wszystkie" style="width:19%;display:inline;"/>
+		<input type="submit" name="dodaj_auto" value="Dodaj samochód" style="width:19%;display:inline;"/>
+		<input type="submit" name="usun_auto" value="Usuń samochód" style="width:19%;display:inline;"/><br>
+
+		<?php
+			require ('../skrypty/usun.php');
+			require ('../skrypty/dodaj.php');	
+		?>
 
 
 	</form>
 	<?php
 		require ('../skrypty/wyszukaj.php');
-		if (isset($_POST['wyszukaj'])) {
-			if (!empty($klienci)) {
+		if (isset($_POST['wyszukaj_auta'])) {
+			if (!empty($samochody)) {
 			?>
 			<table>
 			<tr>
-				<th>Imię klienta</th><th>Nazwisko nazwisko</th><th>PESEL</th>		
+				<th>Marka</th>
+				<th>Kolor</th>
+				<th>Numer rejestracyjny</th>
+				<th>Rok produkcji</th>
+				<th>Cena wynajmu za dzień</th>		
 			</tr>
 	<?php
 	}
@@ -56,12 +67,15 @@
 		?>
 		<?php
 		
-		foreach ($klienci as $klient => $link) {
+		foreach ($samochody as $samochod => $link) {
 		?>
 
 		<tr>
-			<td><?= $link['imie_klienta'] ?></td><td><?= $link['nazwisko_klienta'] ?></td><td><?= $link['PESEL'] ?></td>
-
+		<td><?= $link['marka'] ?></td>
+		<td><?= $link['kolor'] ?></td>
+		<td><?= $link['numer_rejestracyjny'] ?></td>
+		<td><?= $link['rok_produkcji']?></td>
+		<td><?= $link['cena_wynajmu_dzien']?></td>
 		</tr>
 		<?php
 		}
@@ -75,20 +89,25 @@
 			?>
 			<table>
 			<tr>
-				<th>Marka</th><th>Numer rejestracyjny</th><th>Rok produkcji</th><th>Cena wynajmu za dzień</th>		
+				<th>Marka</th>
+				<th>Kolor</th>
+				<th>Numer rejestracyjny</th>
+				<th>Rok produkcji</th>
+				<th>Cena wynajmu za dzień</th>		
 			</tr>
 	<?php
 	}
 		?>
-		<?php
-		
+		<?php		
 		foreach ($samo_wszystkie as $sam_wszystkie => $link2) {
 		?>
 
-		<tr>
-			<td><?= $link2['marka'] ?></td><td><?= $link2['numer_rejestracyjny'] ?></td>
-			<td><?= $link2['rok_produkcji']?></td><td><?= $link2['cena_wynajmu_dzien']?></td>
-
+<tr>
+		<td><?= $link2['marka'] ?></td>
+		<td><?= $link2['kolor'] ?></td>
+		<td><?= $link2['numer_rejestracyjny'] ?></td>
+		<td><?= $link2['rok_produkcji']?></td>
+		<td><?= $link2['cena_wynajmu_dzien']?></td>
 		</tr>
 		<?php
 		}

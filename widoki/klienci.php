@@ -36,9 +36,13 @@
 		<input type="number" name="PESEL" placeholder="podaj numer pesel" style="width:25%;display:inline;text-align:center;" /><br>
 		<input type="submit" name="wyszukaj" value="Wyszukaj klienta" style="width:20%;display:inline;"/> 
 		<input type="submit" name="wyswietl" value="Wyświetl wszystkich" style="width:20%;display:inline;"/>
-		<input type="submit" name="dodaj" value="Dodaj klienta" style="width:20%;display:inline;"/>
-		<input type="submit" name="usun" value="Usuń klienta" style="width:20%;display:inline;"/><br>
+		<input type="submit" name="dodaj_klienta" value="Dodaj klienta" style="width:20%;display:inline;"/>
+		<input type="submit" name="usun_klienta" value="Usuń klienta" style="width:20%;display:inline;"/><br>
 
+		<?php
+			require ('../skrypty/usun.php');
+			require ('../skrypty/dodaj.php');	
+		?>
 
 	</form>
 	<?php

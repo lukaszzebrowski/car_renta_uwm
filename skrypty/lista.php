@@ -13,7 +13,7 @@ if (isset($_POST['wyswietl'])) {
 <?php
 if (isset($_POST['wyswietl_auta'])) {
 	require '../baza.php';
-	$sql1 = 'SELECT marka, numer_rejestracyjny, rok_produkcji, cena_wynajmu_dzien 
+	$sql1 = 'SELECT marka, kolor, numer_rejestracyjny, rok_produkcji, cena_wynajmu_dzien 
 	FROM samochody
 	ORDER BY cena_wynajmu_dzien';
 	

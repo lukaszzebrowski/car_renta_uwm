@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sty 23, 2024 at 01:45 PM
+-- Generation Time: Sty 25, 2024 at 03:11 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.0.30
 
@@ -58,7 +58,8 @@ INSERT INTO `klienci` (`ID_klienta`, `imie_klienta`, `nazwisko_klienta`, `PESEL`
 (17, 'Genowefa', 'Szczerba', '03291856187'),
 (18, 'Sara', 'Skrzecz', '86080611749'),
 (19, 'Karina', 'Paluszek', '85102887661'),
-(20, 'Bogusława', 'Zajdel', '67112637942');
+(20, 'Bogusława', 'Zajdel', '67112637942'),
+(23, 'Magdalena', 'Truszkowska', '99887766543');
 
 -- --------------------------------------------------------
 
@@ -67,29 +68,28 @@ INSERT INTO `klienci` (`ID_klienta`, `imie_klienta`, `nazwisko_klienta`, `PESEL`
 --
 
 CREATE TABLE `samochody` (
-  `ID_samochody` int(11) NOT NULL,
+  `ID_samochodu` int(11) NOT NULL,
   `marka` varchar(255) DEFAULT NULL,
   `kolor` varchar(255) DEFAULT NULL,
   `numer_rejestracyjny` varchar(20) DEFAULT NULL,
   `rok_produkcji` int(11) DEFAULT NULL,
-  `cena_wynajmu_dzien` decimal(10,2) DEFAULT NULL
+  `cena_wynajmu_dzien` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `samochody`
 --
 
-INSERT INTO `samochody` (`ID_samochody`, `marka`, `kolor`, `numer_rejestracyjny`, `rok_produkcji`, `cena_wynajmu_dzien`) VALUES
-(1, 'Mazda', 'Niebieski', 'NEB6397', 2014, 50.00),
-(2, 'Mercedes', 'Biały', 'PMI9560', 2010, 100.00),
-(3, 'Dacia', 'Zielony', 'CTU4035', 2018, 100.00),
-(4, 'Renault', 'Żółty', 'OGL2088', 2020, 50.00),
-(5, 'Hyundai', 'Biały', 'WPN2606', 2019, 100.00),
-(6, 'Jeep', 'Czarny', 'WOT3701', 2014, 50.00),
-(7, 'Porsche', 'Szary', 'DZG7085', 2018, 50.00),
-(8, 'Skoda', 'Biały', 'NO57948', 2018, 50.00),
-(9, 'Volkswagen', 'Złoty', 'BBI8834', 2020, 100.00),
-(10, 'Toyota', 'Niebieski', 'ZST4084', 2018, 150.00);
+INSERT INTO `samochody` (`ID_samochodu`, `marka`, `kolor`, `numer_rejestracyjny`, `rok_produkcji`, `cena_wynajmu_dzien`) VALUES
+(1, 'Mazda', 'Niebieski', 'NEB6397', 2014, 50),
+(2, 'Mercedes', 'Biały', 'PMI9560', 2010, 100),
+(3, 'Dacia', 'Zielony', 'CTU4035', 2018, 100),
+(4, 'Renault', 'Żółty', 'OGL2088', 2020, 50),
+(5, 'Hyundai', 'Biały', 'WPN2606', 2019, 100),
+(6, 'Jeep', 'Czarny', 'WOT3701', 2014, 50),
+(7, 'Porsche', 'Szary', 'DZG7085', 2018, 50),
+(8, 'Skoda', 'Biały', 'NO57948', 2018, 50),
+(11, 'Toyota', 'Niebieski', 'ZST4084', 2018, 150);
 
 -- --------------------------------------------------------
 
@@ -131,7 +131,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID_uzytkownika`, `imie_uzytkownika`, `nazwisko_uzytkownika`, `login_NEP`, `haslo`, `stanowisko_ID`) VALUES
-(0, 'Łukasz', 'Żebrowski', 'admin', '$2y$10$dySayDOQIFV91Z9.As0GLey15Q5MixVh14zSPu49m69vYuwDyV2cm', 2);
+(1, 'Łukasz', 'Żebrowski', 'admin', '$2y$10$dySayDOQIFV91Z9.As0GLey15Q5MixVh14zSPu49m69vYuwDyV2cm', 2);
 
 -- --------------------------------------------------------
 
@@ -145,10 +145,26 @@ CREATE TABLE `wypozyczenia` (
   `Samochody_ID` int(11) DEFAULT NULL,
   `Data_wypozyczenia` date DEFAULT NULL,
   `Planowany_zwrot` date DEFAULT NULL,
-  `Opozniony_zwrot` tinyint(1) DEFAULT NULL,
-  `Notatki` text DEFAULT NULL,
-  `Pracownik_ID` int(11) DEFAULT NULL
+  `koszt` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wypozyczenia`
+--
+
+INSERT INTO `wypozyczenia` (`ID_wypozyczenia`, `Klienci_ID`, `Samochody_ID`, `Data_wypozyczenia`, `Planowany_zwrot`, `koszt`) VALUES
+(1, 3, 5, '2024-01-01', '2024-02-29', 5900),
+(2, 20, 6, '2024-01-01', '2024-01-31', 1500),
+(3, 1, 6, '2024-01-15', '2024-01-12', 150),
+(5, 3, 5, '2024-01-09', '2024-01-28', 1900),
+(6, 1, 4, '2024-01-01', '2024-01-27', 1300),
+(7, 5, 5, '2024-01-01', '2024-01-27', 2600),
+(8, 18, 6, '2024-01-01', '2024-01-26', 1250),
+(9, 6, 7, '2023-12-01', '2024-01-26', 2800),
+(10, 18, 6, '2024-01-01', '2024-01-28', 1350),
+(11, 1, 3, '2024-01-02', '2024-01-28', 2600),
+(12, 12, 6, '2024-01-01', '2024-01-14', 650),
+(13, 3, 6, '2024-01-22', '2024-01-17', 250);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -165,7 +181,7 @@ ALTER TABLE `klienci`
 -- Indeksy dla tabeli `samochody`
 --
 ALTER TABLE `samochody`
-  ADD PRIMARY KEY (`ID_samochody`),
+  ADD PRIMARY KEY (`ID_samochodu`),
   ADD UNIQUE KEY `Numer_rejestracyjny` (`numer_rejestracyjny`);
 
 --
@@ -190,8 +206,41 @@ ALTER TABLE `users`
 ALTER TABLE `wypozyczenia`
   ADD PRIMARY KEY (`ID_wypozyczenia`),
   ADD KEY `Klienci_ID` (`Klienci_ID`),
-  ADD KEY `Samochody_ID` (`Samochody_ID`),
-  ADD KEY `Pracownik_ID` (`Pracownik_ID`);
+  ADD KEY `Samochody_ID` (`Samochody_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `klienci`
+--
+ALTER TABLE `klienci`
+  MODIFY `ID_klienta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `samochody`
+--
+ALTER TABLE `samochody`
+  MODIFY `ID_samochodu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `stanowiska`
+--
+ALTER TABLE `stanowiska`
+  MODIFY `ID_stanowiska` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `ID_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `wypozyczenia`
+--
+ALTER TABLE `wypozyczenia`
+  MODIFY `ID_wypozyczenia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
@@ -208,8 +257,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `wypozyczenia`
   ADD CONSTRAINT `wypozyczenia_ibfk_1` FOREIGN KEY (`Klienci_ID`) REFERENCES `klienci` (`ID_klienta`),
-  ADD CONSTRAINT `wypozyczenia_ibfk_2` FOREIGN KEY (`Samochody_ID`) REFERENCES `samochody` (`ID_samochody`),
-  ADD CONSTRAINT `wypozyczenia_ibfk_3` FOREIGN KEY (`Pracownik_ID`) REFERENCES `users` (`ID_uzytkownika`);
+  ADD CONSTRAINT `wypozyczenia_ibfk_2` FOREIGN KEY (`Samochody_ID`) REFERENCES `samochody` (`ID_samochodu`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
