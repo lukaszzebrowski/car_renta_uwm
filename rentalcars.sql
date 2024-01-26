@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sty 25, 2024 at 03:11 PM
+-- Generation Time: Sty 26, 2024 at 02:43 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.0.30
 
@@ -108,6 +108,7 @@ CREATE TABLE `stanowiska` (
 
 INSERT INTO `stanowiska` (`ID_stanowiska`, `nazwa_stanowiska`) VALUES
 (2, 'Administrator'),
+(4, 'GOD'),
 (1, 'Kierownik'),
 (3, 'Pracownik');
 
@@ -131,7 +132,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID_uzytkownika`, `imie_uzytkownika`, `nazwisko_uzytkownika`, `login_NEP`, `haslo`, `stanowisko_ID`) VALUES
-(1, 'Łukasz', 'Żebrowski', 'admin', '$2y$10$dySayDOQIFV91Z9.As0GLey15Q5MixVh14zSPu49m69vYuwDyV2cm', 2);
+(1, 'Łukasz', 'Żebrowski', 'admin', '$2y$10$dySayDOQIFV91Z9.As0GLey15Q5MixVh14zSPu49m69vYuwDyV2cm', 2),
+(2, 'Anna', 'Jakaśtam', 'anna', '$2y$10$rh7n38IZ.3yacSqZ80HO3uTOlaQwHxfIaTNIk8/EWzV67TChFCiHK', 2),
+(3, 'Basia', 'Basiowa', 'basia', '$2y$10$PoVZ2e5opZmU2LwhPx96GOK5sJdW6Xw58bjbWgyWs.s6pTennuHOi', 3),
+(4, 'Arek', 'Arekkowski', 'arek', '$2y$10$CQYa3G4B4we4l0c7PQvDs.IVqrWUkbYJaDWq4Ksvh0MJLDKERzwTK', 3),
+(5, 'Magda', 'Magdowska', 'magda', '$2y$10$ijfRkK/yH8fUA0Evd.nJqu1RdmOo5gvoeL8Y3boJVaDfEqe8oNGXG', 1),
+(6, 'Kasia', 'Kasiowska', 'kasia', '$2y$10$ierqv.LC7/shw2MiZYOoB.cPvD8n6fZVbShdKLvYhhC6HNFWfhrwO', 1),
+(7, 'GOD', 'GOD', 'GOD', '$2y$10$x..c9DFy65UeTjZ4AS5j5OudbjNvpYdemX9Rbg9enos0hup8v5C9a', 4);
 
 -- --------------------------------------------------------
 
@@ -156,15 +163,26 @@ INSERT INTO `wypozyczenia` (`ID_wypozyczenia`, `Klienci_ID`, `Samochody_ID`, `Da
 (1, 3, 5, '2024-01-01', '2024-02-29', 5900),
 (2, 20, 6, '2024-01-01', '2024-01-31', 1500),
 (3, 1, 6, '2024-01-15', '2024-01-12', 150),
-(5, 3, 5, '2024-01-09', '2024-01-28', 1900),
-(6, 1, 4, '2024-01-01', '2024-01-27', 1300),
-(7, 5, 5, '2024-01-01', '2024-01-27', 2600),
-(8, 18, 6, '2024-01-01', '2024-01-26', 1250),
-(9, 6, 7, '2023-12-01', '2024-01-26', 2800),
-(10, 18, 6, '2024-01-01', '2024-01-28', 1350),
-(11, 1, 3, '2024-01-02', '2024-01-28', 2600),
-(12, 12, 6, '2024-01-01', '2024-01-14', 650),
-(13, 3, 6, '2024-01-22', '2024-01-17', 250);
+(4, 3, 5, '2024-01-09', '2024-01-28', 1900),
+(5, 1, 4, '2024-01-01', '2024-01-27', 1300),
+(6, 5, 5, '2024-01-01', '2024-01-27', 2600),
+(7, 18, 6, '2024-01-01', '2024-01-26', 1250),
+(8, 6, 7, '2023-12-01', '2024-01-26', 2800),
+(9, 18, 6, '2024-01-01', '2024-01-28', 1350),
+(10, 1, 3, '2024-01-02', '2024-01-28', 2600),
+(11, 12, 6, '2024-01-01', '2024-01-14', 650),
+(12, 3, 6, '2024-01-22', '2024-01-17', 250),
+(13, 1, 8, '2024-01-01', '2024-01-08', 350),
+(14, 12, 2, '2024-01-10', '2024-01-12', 200),
+(15, 2, 5, '2024-01-22', '2024-01-24', 200),
+(16, 12, 3, '2024-01-15', '2024-01-20', 500),
+(17, 19, 6, '2024-01-01', '2024-01-14', 650),
+(18, 4, 7, '2024-01-23', '2024-01-24', 50),
+(19, 2, 6, '2024-01-02', '2024-01-26', 1200),
+(31, 17, 4, '2024-01-11', '2024-01-14', 150),
+(32, 18, 7, '2024-01-01', '2024-01-07', 300),
+(33, 11, 7, '2023-12-01', '2023-12-03', 100),
+(34, 18, 5, '2023-12-04', '2023-12-08', 400);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -228,19 +246,19 @@ ALTER TABLE `samochody`
 -- AUTO_INCREMENT for table `stanowiska`
 --
 ALTER TABLE `stanowiska`
-  MODIFY `ID_stanowiska` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_stanowiska` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_uzytkownika` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `wypozyczenia`
 --
 ALTER TABLE `wypozyczenia`
-  MODIFY `ID_wypozyczenia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_wypozyczenia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Constraints for dumped tables

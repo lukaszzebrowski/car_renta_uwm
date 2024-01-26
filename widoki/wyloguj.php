@@ -6,21 +6,17 @@
 <link rel="stylesheet" type="text/css" href="../style/style.css" />
 </head>
 <body>
-	<div>
-	<h1>Car rental</h1>
-	<h3>Jesteś wylogowany<h3>
+<header class="header">
+	<a href="#" class="logo">Car rental</a>
+    <h1>Jesteś wylogowany<h1>
+    <nav class="navibar">
 	<h2><a href="logowanie.php">Zaloguj ponownie</a></h2>
-	
-	</div>
+    </nav>
+</header>
 	<footer>
-        <div>
             &copy; <?= date('Y') ?> Łukasz Żebrowski
-        </div>
-        <div>
-            <a href="#">Kontakt</a>
-            <a href="#">Regulamin</a>
-            <!-- Dodaj inne linki, jeśli są potrzebne -->
-        </div>
+            <a href="#" class="foot">Kontakt</a>
+            <a href="#" class="foot">Regulamin</a>
     </footer>
 </body>
 </html>

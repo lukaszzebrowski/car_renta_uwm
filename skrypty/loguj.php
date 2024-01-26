@@ -26,6 +26,7 @@
 				$_SESSION['login_NEP'] = $user['login_NEP'];
 				$_SESSION['imie_uzytkownika'] = $user['imie_uzytkownika'];
 				$_SESSION['nazwisko_uzytkownika'] = $user['nazwisko_uzytkownika'];
+				$_SESSION['login_time'] = date('Y-m-d H:i:s');
 				header("Location:../index.php");
 			}
 			else {

@@ -6,41 +6,40 @@
 <link rel="stylesheet" type="text/css" href="../style/style.css" />
 </head>
 <body>
-	<div>
-	<a href="wyloguj.php">Wyloguj</a>
-	<?php
-		session_start();
-		if (isset($_SESSION['sesja'])) {
-		?>
-	<a href="konto.php">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
-	<?php
-		}
-		else {
-			header("Location:logowanie.php");
-		}
-		?>
-	<h1>Car rental</h1>
-	<nav>
-	<ul>
-
-			<li><a href="../index.php">Home</a></li>
+<header class="header">
+	<a href="#" class="logo">Car rental</a>
+	<nav class="navibar">
+			<a href="../index.php">Home</a>
 			<?php
+			session_start();
 			if ($_SESSION['nazwa_stanowiska'] !== 'Administrator') {
 				?>
-			<li><a href="wynajmij.php">Wynajmij</a></li>
-			<li><a href="klienci.php">Klienci</a></li>
-			<li><a href="samochody.php">Samochody</a></li>
-			<li><a href="statystyki.php">Statystyki</a></li>
+			<a href="wynajmij.php">Wynajmij</a>
+			<a href="klienci.php">Klienci</a>
+			<a href="samochody.php">Samochody</a>
+			<a href="statystyki.php">Statystyki</a>
 			<?php
 			}
 			else {
 			?>
-			<li><a href="uzytkownicy.php">Użytkownicy</a></li>
+			<a href="uzytkownicy.php">Użytkownicy</a>
 			<?php
 			}
 			?>
-		</ul>
+			<?php
+			if (isset($_SESSION['sesja'])) {
+			?>
+			<a href="konto.php">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
+			<?php
+			}
+			else {
+			header("Location:logowanie.php");
+			}
+			?>
+			
+			<a href="wyloguj.php">Wyloguj</a>
 	</nav>	
+	</header>	
 	<h2>Rejestracja nowego użytkownika</h2>
 	<?php
 		require '../skrypty/wczytywanie.php';
@@ -78,13 +77,9 @@
 	
 	</div>
 	<footer>
-        <div>
             &copy; <?= date('Y') ?> Łukasz Żebrowski
-        </div>
-        <div>
-            <a href="#">Kontakt</a>
-            <a href="#">Regulamin</a>
-        </div>
+            <a href="#" class="foot">Kontakt</a>
+            <a href="#" class="foot">Regulamin</a>
     </footer>
 </body>
 </html>

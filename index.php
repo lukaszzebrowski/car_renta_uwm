@@ -1,3 +1,7 @@
+<?php
+$dzisiejsza_data_i_godzina = date("Y-m-d H:i:s");
+?>
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>	
@@ -6,57 +10,60 @@
 <link rel="stylesheet" type="text/css" href="style/style.css" />
 </head>
 <body>
-	<div class="wrapper">
-	<a href="widoki/wyloguj.php">Wyloguj</a>
-	<?php
-		session_start();
-		if (isset($_SESSION['sesja'])) {
-		?>
-	<a href="widoki/konto.php">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
-	<?php
-		}
-		?>
-	<h1>Car Rental</h1>
-	<nav>
-		<ul>
-			<li><a href="index.php">Home</a></li>
+<header class="header">
+	<a href="#" class="logo">Car rental</a>
+	<h2>Home<h2>
+	<nav class="navibar">
+			<a href="index.php">Home</a>
 			<?php
+			session_start();
 			if ($_SESSION['nazwa_stanowiska'] !== 'Administrator') {
 				?>
-			<li><a href="widoki/wynajmij.php">Wynajmij</a></li>
-			<li><a href="widoki/klienci.php">Klienci</a></li>
-			<li><a href="widoki/samochody.php">Samochody</a></li>
-			<li><a href="widoki/statystyki.php">Statystyki</a></li>
+			<a href="widoki/wynajmij.php">Wynajmij</a>
+			<a href="widoki/klienci.php">Klienci</a>
+			<a href="widoki/samochody.php">Samochody</a>
+			<a href="widoki/statystyki.php">Statystyki</a>
 			<?php
 			}
 			else {
 			?>
-			<li><a href="widoki/uzytkownicy.php">Użytkownicy</a></li>
+			<a href="uzytkownicy.php">Użytkownicy</a>
 			<?php
 			}
 			?>
-		</ul>
-	</nav>	
-		<h2>Witaj w aplikacji<h2>
-		<?php
+			<?php
 			if (isset($_SESSION['sesja'])) {
+			?>
+			<a href="widoki/konto.php">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
+			<?php
+			}
+			else {
+			header("Location:logowanie.php");
+			}
+			?>
+			
+			<a href="widoki/wyloguj.php">Wyloguj</a>
+	</nav>	
+	</header>	
+			
+		<?php
+			if (isset($_SESSION['sesja'])) {echo date("H:i", strtotime($_SESSION['login_time']));
 				?>
-				<h2>Witaj <b><?=$_SESSION['imie_uzytkownika'];?> <?=$_SESSION['nazwisko_uzytkownika'];?></b></h2>
+				<div class="welcome">
+    			<h2 class="welcome-container">Witaj <span class="name"><?= $_SESSION['imie_uzytkownika'];?></span> <span class="surname"><?=$_SESSION['nazwisko_uzytkownika'];?></span></h2>
+    			<p>Dzisiaj jest <?php echo date("d-m-Y"); ?>, zalogowałeś się o <?php echo date("H:i", strtotime($_SESSION['login_time'])); ?>.</p>
+  				</div>
 				<?php
 			}
 			else {
 				header("Location:widoki/logowanie.php");
 			}
 		?>
-		</div>
+		
 		<footer>
-        <div>
             &copy; <?= date('Y') ?> Łukasz Żebrowski
-        </div>
-        <div>
-            <a href="#">Kontakt</a>
-            <a href="#">Regulamin</a>
-        </div>
+            <a href="#" class="foot">Kontakt</a>
+            <a href="#" class="foot">Regulamin</a>
     </footer>
 </body>
 </html>
