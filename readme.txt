@@ -1,7 +1,7 @@
 +-----------------------------------+
 | login  |  haslo  |  uprawnienia   |
 | ----------------------------------|
-| admin  |  admin  |  administrator |
+| admin  | admin   |  administrator |
 | basia  | basia   |  kierownik     |
 | kasia  | kasia   |  pracownik     |
 + ----------------------------------+
