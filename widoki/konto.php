@@ -8,6 +8,7 @@
 <body>
 <header class="header">
 	<a href="#" class="logo">Car rental</a>
+	<h2>Moje konto</h2>
 	<nav class="navibar">
 			<a href="../index.php">Home</a>
 			<?php
@@ -17,8 +18,12 @@
 			<a href="wynajmij.php">Wynajmij</a>
 			<a href="klienci.php">Klienci</a>
 			<a href="samochody.php">Samochody</a>
+			<?php
+            if ($_SESSION['nazwa_stanowiska'] == 'Kierownik') {
+				?>
 			<a href="statystyki.php">Statystyki</a>
 			<?php
+            }
 			}
 			else {
 			?>
@@ -29,7 +34,7 @@
 			<?php
 			if (isset($_SESSION['sesja'])) {
 			?>
-			<a href="konto.php">Zalogowany jako: <b><?=$_SESSION['login_NEP'];?></b></a>
+			<a href="konto.php">Zalogowany jako: <?=$_SESSION['login_NEP'];?></b></a>
 			<?php
 			}
 			else {
@@ -40,7 +45,7 @@
 			<a href="wyloguj.php">Wyloguj</a>
 	</nav>	
 	</header>	
-	<h2>Moje konto</h2>
+	
 	<table>
 		<?php
 		if (isset($_SESSION['sesja'])) {
@@ -48,13 +53,13 @@
 		?>
 		<dl>
   			<dt>Imię użytkownika:</dt>
-  			<dd><b><?=$_SESSION['imie_uzytkownika'];?></b></dd>
+  			<dd><span class="user"><?=$_SESSION['imie_uzytkownika'];?></span></b></dd>
   			<dt>Nazwisko użytkownia:</dt>
-  			<dd><b><?=$_SESSION['nazwisko_uzytkownika'];?></b></dd>
+  			<dd><span class="user"><?=$_SESSION['nazwisko_uzytkownika'];?></span></b></dd>
 			<dt>Login (NEP) użytkownika:</dt>
-  			<dd><b><?=$_SESSION['login_NEP'];?></b></dd>
+  			<dd><span class="user"><?=$_SESSION['login_NEP'];?></b></span></dd>
 			<dt>Stanowisko:</dt>
-  			<dd><b><?=$_SESSION['nazwa_stanowiska'];?></b></dd>
+  			<dd><span class="user"><?=$_SESSION['nazwa_stanowiska'];?></b></span></dd>
 		</dl>
 		<?php	
 	}

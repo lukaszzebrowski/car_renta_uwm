@@ -8,6 +8,7 @@
 <body>
 <header class="header">
 	<a href="#" class="logo">Car rental</a>
+	<h2>Rejestracja nowego użytkownika</h2>
 	<nav class="navibar">
 			<a href="../index.php">Home</a>
 			<?php
@@ -16,9 +17,17 @@
 				?>
 			<a href="wynajmij.php">Wynajmij</a>
 			<a href="klienci.php">Klienci</a>
-			<a href="samochody.php">Samochody</a>
+			<?php
+            if ($_SESSION['nazwa_stanowiska'] == 'Kierownik') {
+				?>
 			<a href="statystyki.php">Statystyki</a>
 			<?php
+            }
+            if ($_SESSION['nazwa_stanowiska'] == 'Kierownik') {
+				?>
+			<a href="statystyki.php">Statystyki</a>
+			<?php
+            }
 			}
 			else {
 			?>
@@ -40,13 +49,14 @@
 			<a href="wyloguj.php">Wyloguj</a>
 	</nav>	
 	</header>	
-	<h2>Rejestracja nowego użytkownika</h2>
+	
 	<?php
 		require '../skrypty/wczytywanie.php';
-		if ($_SESSION['nazwa_stanowiska'] == 'Administrator' || $_SESSION['nazwa_stanowiska'] == 'GOD') {
+		if ($_SESSION['nazwa_stanowiska'] == 'Administrator') {
 			?>
-		<div>
-		<form action="uzytkownicy.php" method="post">
+		<div class="form-conteiner">
+		<form action="uzytkownicy.php" method="post" class="form special-form">
+		
 			<p><input type="text" name="imie_uzytkownika" placeholder="podaj imie" required /></p>
 			<p><input type="text" name="nazwisko_uzytkownika" placeholder="podaj nazwisko" required /></p>
 			<p><input type="text" name="login_NEP" placeholder="podaj login" required /></p>
@@ -70,7 +80,7 @@
 			require '../skrypty/rejestruj.php';
 		}
 		else {
-			echo "Nie masz uprawnień.";
+			echo '<h3 class="error-message">Nie masz uprawnień.</h3>';
 		}
 		?>
 		</div>

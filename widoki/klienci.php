@@ -8,6 +8,7 @@
 <body>
 	<header class="header">
 	<a href="#" class="logo">Car rental</a>
+	<h2>Klienci</h2>
 	<nav class="navibar">
 			<a href="../index.php">Home</a>
 			<?php
@@ -17,8 +18,12 @@
 			<a href="wynajmij.php">Wynajmij</a>
 			<a href="klienci.php">Klienci</a>
 			<a href="samochody.php">Samochody</a>
+			<?php
+            if ($_SESSION['nazwa_stanowiska'] == 'Kierownik') {
+				?>
 			<a href="statystyki.php">Statystyki</a>
 			<?php
+            }
 			}
 			else {
 			?>
@@ -41,43 +46,51 @@
 	</nav>	
 	</header>
 	
-	<h2>Klienci</h2>
+	
 	<?php
 	if ($_SESSION['nazwa_stanowiska'] == 'Kierownik' || $_SESSION['nazwa_stanowiska'] == 'Pracownik' || $_SESSION['nazwa_stanowiska'] == 'GOD') {
 		?>	
-	<div>
-	<form name="dane" action="klienci.php" method="post">
-		<input type="text" name="imie_klienta" placeholder="podaj imie" style="width:25%;display:inline;text-align:center;"/>
-		<input type="text" name="nazwisko_klienta" placeholder="podaj nazwisko" style="width:25%;display:inline;text-align:center;"/>
-		<input type="number" name="PESEL" placeholder="podaj numer pesel" style="width:25%;display:inline;text-align:center;" /><br>
-		<input type="submit" name="wyszukaj" value="Wyszukaj klienta" style="width:20%;display:inline;"/> 
-		<input type="submit" name="wyswietl" value="Wyświetl wszystkich" style="width:20%;display:inline;"/>		
+	<div class="form-conteiner">
 		
-	</div>
+	<form name="dane" action="klienci.php" method="post" class="form special-form">
+	<h2>Wyszukaj i lub wyświetl klientów</h2>
+		<input type="text" name="imie_klienta" placeholder="podaj imie" />
+		<input type="text" name="nazwisko_klienta" placeholder="podaj nazwisko" />
+		<input type="number" name="PESEL" placeholder="podaj numer pesel"  /><br>
+		<input type="submit" name="wyszukaj" value="Wyszukaj klienta" "/> 
+		<input type="submit" name="wyswietl" value="Wyświetl wszystkich" "/>		
+		</form>
+	
 	<?php
-	if ($_SESSION['nazwa_stanowiska'] == 'Kierownik' ||  $_SESSION['nazwa_stanowiska'] == 'GOD') {
+	if ($_SESSION['nazwa_stanowiska'] == 'Kierownik') {
 		?>
-	<div>
-		<input type="text" name="imie_klienta" placeholder="podaj imie" style="width:25%;display:inline;text-align:center;"/>
-		<input type="text" name="nazwisko_klienta" placeholder="podaj nazwisko" style="width:25%;display:inline;text-align:center;"/>
-		<input type="number" name="PESEL" placeholder="podaj numer pesel" style="width:25%;display:inline;text-align:center;" /><br>
-		<input type="submit" name="dodaj_klienta" value="Dodaj klienta" style="width:20%;display:inline;"/>
-	</div>
-	<div>
-		<input type="number" name="PESEL" placeholder="podaj numer pesel" style="width:25%;display:inline;text-align:center;" /><br>
-		<input type="submit" name="usun_klienta" value="Usuń klienta" style="width:20%;display:inline;"/><br>
+	
+	<form name="dane" action="klienci.php" method="post" class="form special-form">
+	<h2>Dodaj klienta</h2>
+		<input type="text" name="imie_klienta" placeholder="podaj imie" />
+		<input type="text" name="nazwisko_klienta" placeholder="podaj nazwisko" />
+		<input type="number" name="PESEL" placeholder="podaj numer pesel"  /><br>
+		<input type="submit" name="dodaj_klienta" value="Dodaj klienta" "/>
+		</form>
+	
+	<form name="dane" action="klienci.php" method="post" class="form special-form">
+	<h2>Usuń klienta</h2>
+		<input type="number" name="PESEL" placeholder="podaj numer pesel"  /><br>
+		<input type="submit" name="usun_klienta" value="Usuń klienta" "/><br>
+		</form>
 	</div>
 		<?php
 			require ('../skrypty/usun.php');
 			require ('../skrypty/dodaj.php');
 	}	
-		?>
-	</form>
-	<?php
+		
+	
 		require ('../skrypty/wyszukaj.php');
 		if (isset($_POST['wyszukaj'])) {
 			if (!empty($klienci)) {
 			?>
+		<div class="table-container table-conteiner">
+			<div id="tabela" class="table-special">
 			<table>
 			<tr>
 				<th>Imię klienta</th><th>Nazwisko nazwisko</th><th>PESEL</th>		
@@ -127,11 +140,12 @@
 		}
 	}
 	else {
-		echo "Nie masz uprawnień.";
+		echo '<h3 class="error-message">Nie masz uprawnień.</h3>';
 	}
 		?>
 		
 	</table>
+	</div>
 	</div>
 	<footer>
             &copy; <?= date('Y') ?> Łukasz Żebrowski

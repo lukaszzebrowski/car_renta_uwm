@@ -18,8 +18,12 @@
 			<a href="wynajmij.php">Wynajmij</a>
 			<a href="klienci.php">Klienci</a>
 			<a href="samochody.php">Samochody</a>
+            <?php
+            if ($_SESSION['nazwa_stanowiska'] == 'Kierownik') {
+				?>
 			<a href="statystyki.php">Statystyki</a>
 			<?php
+            }
 			}
 			else {
 			?>
@@ -44,7 +48,7 @@
 
 	
 	<?php
-	if ($_SESSION['nazwa_stanowiska'] == 'Kierownik' || $_SESSION['nazwa_stanowiska'] == 'Pracownik' || $_SESSION['nazwa_stanowiska'] == 'GOD') {
+	if ($_SESSION['nazwa_stanowiska'] == 'Kierownik') {
         require '../skrypty/statystyka.php';
         ?>
         <div class="table-conteiner">
@@ -66,7 +70,7 @@
             </tr>
         <?php
         }
-    }
+    
      ?>
      	</table>
          <h3 class="table-header">Ilości i wartości wypożyczonych samochodów po każdym miesiącu</h3>
@@ -152,6 +156,10 @@
         </tr>
         <?php
         }
+    }
+    else {
+        echo '<h3 class="error-message">Nie masz uprawnień.</h3>';
+    }
         ?>
         </table>
         </div>

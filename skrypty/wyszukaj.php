@@ -40,7 +40,7 @@
 			$klienci = $stmt4->fetchAll();
 		}
 		else {
-			echo 'Brak klienta o podanych danych.';
+			echo '<h3 class="error-message">Brak klienta o podanych danych.</h3>';
 		}
 	}
 ?>
@@ -108,7 +108,7 @@
 			$samochody = $stmt5->fetchAll();
 		}
 		else {
-			echo 'Brak samochodów o podanych danych.';
+			echo '<h3 class="error-message">Brak samochodów o podanych danych.</h3>';
 		}
 	}
 ?>

@@ -22,12 +22,16 @@ $dzisiejsza_data_i_godzina = date("Y-m-d H:i:s");
 			<a href="widoki/wynajmij.php">Wynajmij</a>
 			<a href="widoki/klienci.php">Klienci</a>
 			<a href="widoki/samochody.php">Samochody</a>
+			<?php
+            if ($_SESSION['nazwa_stanowiska'] == 'Kierownik') {
+				?>
 			<a href="widoki/statystyki.php">Statystyki</a>
 			<?php
+            }
 			}
 			else {
 			?>
-			<a href="uzytkownicy.php">Użytkownicy</a>
+			<a href="widoki/uzytkownicy.php">Użytkownicy</a>
 			<?php
 			}
 			?>
@@ -47,7 +51,7 @@ $dzisiejsza_data_i_godzina = date("Y-m-d H:i:s");
 	</header>	
 			
 		<?php
-			if (isset($_SESSION['sesja'])) {echo date("H:i", strtotime($_SESSION['login_time']));
+			if (isset($_SESSION['sesja'])) { 
 				?>
 				<div class="welcome">
     			<h2 class="welcome-container">Witaj <span class="name"><?= $_SESSION['imie_uzytkownika'];?></span> <span class="surname"><?=$_SESSION['nazwisko_uzytkownika'];?></span></h2>

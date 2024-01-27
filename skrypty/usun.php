@@ -20,14 +20,14 @@
 	
 			if ($_POST['numer_rejestracyjny'] != null) {
 				
-				echo 'Usunięto samochód o numerze rejestracyjnym: '.$numer_rejestracyjny_del;
+				echo '<h3 class="success-message">Usunięto samochód o numerze rejestracyjnym: '.$numer_rejestracyjny_del.'</h3>';
 			}
 			else {
-				echo '<h4 style="color:red;">Nie podano numeru rejestracyjnego!</h4>';
+				echo '<h3 class="error-message">Nie podano numeru rejestracyjnego!</h3>';
 			}
 		}
 		else {
-			echo 'Podany samochód w bazie nie istnieje.';
+			echo '<h3 class="error-message">Podany samochód w bazie nie istnieje.</h3>';
 		}
 	}
 ?>
@@ -54,14 +54,14 @@
 	
 			if ($_POST['PESEL'] != null) {
 				
-				echo 'Usunięto klienta o numerze PESEL: '.$numer_PESEL_del;
+				echo '<h3 class="success-message">Usunięto klienta o numerze PESEL: '.$numer_PESEL_del.'</h3>';
 			}
 			else {
-				echo '<h4 style="color:red;">Nie podano numeru PESEL!</h4>';
+				echo '<h3 class="error-message">Nie podano numeru PESEL!</h3>';
 			}
 		}
 		else {
-			echo 'Podany klient w bazie nie istnieje.';
+			echo '<h3 class="error-message">Podany klient w bazie nie istnieje.</h3>';
 		}
 	}
 ?>

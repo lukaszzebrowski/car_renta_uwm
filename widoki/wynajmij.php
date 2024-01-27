@@ -8,6 +8,7 @@
 <body>
 <header class="header">
 	<a href="#" class="logo">Car rental</a>
+	<h2>Wynajmij</h2>
 	<nav class="navibar">
 			<a href="../index.php">Home</a>
 			<?php
@@ -17,8 +18,12 @@
 			<a href="wynajmij.php">Wynajmij</a>
 			<a href="klienci.php">Klienci</a>
 			<a href="samochody.php">Samochody</a>
+			<?php
+            if ($_SESSION['nazwa_stanowiska'] == 'Kierownik') {
+				?>
 			<a href="statystyki.php">Statystyki</a>
 			<?php
+            }
 			}
 			else {
 			?>
@@ -40,14 +45,14 @@
 			<a href="wyloguj.php">Wyloguj</a>
 	</nav>	
 	</header>
-	<h2>Wynajmij</h2>
+	
 	<?php
-	if ($_SESSION['nazwa_stanowiska'] == 'Kierownik' || $_SESSION['nazwa_stanowiska'] == 'Pracownik' || $_SESSION['nazwa_stanowiska'] == 'GOD') {
+	if ($_SESSION['nazwa_stanowiska'] == 'Kierownik' || $_SESSION['nazwa_stanowiska'] == 'Pracownik') {
 		if(isset($_SESSION['sesja'])) {
 			require '../skrypty/wczytywanie.php';
 		?>
-		<form name="dane" action="wynajmij.php" method="post">
-		<div class="left">
+		<form name="dane" action="wynajmij.php" method="post" class="form special-form">
+		<div class="form-conteiner">
 		<select name="klient">
 			<option value="" disabled selected hidden>wybierz klienta</option>
 			<?php
@@ -91,12 +96,9 @@
 
 		<?php
 	}
-		else {
-			echo "Proszę się zalogować";
-		}
 	}
 	else {
-		echo "Nie masz uprawnień.";
+		echo '<h3 class="error-message">Nie masz uprawnień.</h3>';
 	}
 		?>
 </div>

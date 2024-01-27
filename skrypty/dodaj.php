@@ -31,11 +31,11 @@
 			$stmt2->execute();
 			$ostatni = $stmt2->fetch();
 			if ($nowy>1) {
-				echo '<h3>Dodano samochod: '.$ostatni['marka'].' '.$ostatni['kolor'].' '.$ostatni['numer_rejestracyjny'].'</h3>';
+				echo '<h3 class="success-message">Dodano samochod: '.$ostatni['marka'].' '.$ostatni['kolor'].' '.$ostatni['numer_rejestracyjny'].'</h3>';
 			}
 		}
 		else {
-			echo 'Samochód u numerze rejestracyjnym: '.$_POST['numer_rejestracyjny'].' już istnieje';
+			echo '<h3 class="error-message">Samochód u numerze rejestracyjnym: '.$_POST['numer_rejestracyjny'].' już istnieje</h3>';
 		}
 	}
 ?>
@@ -71,11 +71,11 @@
 			$stmt5->execute();
 			$ostatni5 = $stmt5->fetch();
 			if ($nowy4>1) {
-				echo '<h3>Dodano klineta:<br> Imię: '.$ostatni5['imie_klienta'].'<br>Nazwisko: '.$ostatni5['nazwisko_klienta'].'<br>Pesel: '.$ostatni5['PESEL'].'</h3>';
+				echo '<h3 class="success-message">Dodano klineta:<br> Imię: '.$ostatni5['imie_klienta'].'<br>Nazwisko: '.$ostatni5['nazwisko_klienta'].'<br>Pesel: '.$ostatni5['PESEL'].'</h3>';
 			}
 		}
 		else {
-			echo 'Klient o numerze PESEL: '.$_POST['PESEL'].' już istnieje';
+			echo '<h3 class="error-message">Klient o numerze PESEL: '.$_POST['PESEL'].' już istnieje</h3>';
 		}
 	}
 ?>
@@ -124,7 +124,7 @@ if (isset($_POST['wynajmij'])) {
 		$ostatni7 = $stmt7->fetch(PDO::FETCH_ASSOC);
 	//pobranie numeru ostatniego pacjenta w bazie (czyli tego, który został dodany)
 	if ($nowy6>0) {
-		echo '<h3>Wypożyczono: '.$ostatni7['marka'].' dla '.$ostatni7['imie_klienta'].' '.$ostatni7['nazwisko_klienta'].'. Koszt wypożyczyenia: '.$ostatni7['koszt'].'</h3>';
+		echo '<h3 class="success-message">Wypożyczono: '.$ostatni7['marka'].' dla '.$ostatni7['imie_klienta'].' '.$ostatni7['nazwisko_klienta'].'. Koszt wypożyczenia: '.$ostatni7['koszt'].'zł</h3>';
 	}
 }
 

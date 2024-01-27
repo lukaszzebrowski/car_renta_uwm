@@ -27,11 +27,11 @@
 			$stmt1->bindValue(':haslo', $hash, PDO::PARAM_STR);
 			$stmt1->bindValue(':stanowisko_ID', $_POST['stanowisko_ID'], PDO::PARAM_STR);
 			$stmt1->execute();
-			echo 'Konto zostało utworzone.Dodano użytkownika: '.$_POST['login_NEP'];
+			echo '<h3 class="success-message">Konto zostało utworzone.Dodano użytkownika: '.$_POST['login_NEP'].'</h3>';
 		}
 		else
 		{
-			echo 'Podany login '.'<b>'.$_POST['login_NEP'].'</b>'.' jest już zajęty. Podaj inną nazwę';
+			echo '<h3 class="error-message">Podany login '.'<b>'.$_POST['login_NEP'].'</b>'.' jest już zajęty. Podaj inną nazwę</h3>';
 		}
 	 }
 	
